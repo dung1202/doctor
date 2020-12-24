@@ -38,15 +38,16 @@ class inputWrapper extends HTMLElement
             <div class="input-wrapper">
                 <input id="input-main" type="${this.type}" placeholder="${this.placeholder}">
                 <div class="error">
-                    ${this.error}
+
                 </div>
             </div>
             ${style}
             
         `
+        
     }
     static get observedAttributes()
-    {
+    { 
         return ['error']
     }
 

@@ -12,7 +12,7 @@ const style = `
 }
 #login-form{
     width: 40%;
-        background-color: rgba(197, 197, 197, 0.7);
+        background-color: rgba(197, 197, 197, 1);
         height: 75vh;
         padding: 0px 20px;
         border-radius: 10px;
@@ -118,9 +118,9 @@ class loginScreen extends HTMLElement {
         </div>
         <div class="footer">
              Copyright © 2020 Doctor Sleep. All rights reserved
-        </>
+        </div>
         </form>
-    <div>
+    </div>
     ${style}
     `
         const loginFrom = this._shadowRoot.getElementById('login-form')
@@ -134,11 +134,16 @@ class loginScreen extends HTMLElement {
             if (email.trim() === '') {
                 this.SetError('first-name', 'please input email')
                 isValid = false
-                // dua vao 
+            }
+            else{
+                this.SetError('first-name', '')
             }
             if (pass.trim() === '') {
                 this.SetError('password', 'please input passpword')
                 isValid = false
+            }
+            else{
+                this.SetError('password', '')
             }
             if (!isValid) {
                 return
@@ -164,12 +169,16 @@ class loginScreen extends HTMLElement {
             a.style.background = `url('./anh nen/anhnen1.jpg')`;
             a.style.backgroundSize= `cover`;
             a.style.backgroundRepeat = `no-repeat`;
+            let b = this._shadowRoot.getElementById('login-form')
+            b.style.backgroundColor= `rgba(197, 197, 197, 1.0)`;
         })
         this._shadowRoot.getElementById('login-form').addEventListener('mouseout', () => {
             let a = this._shadowRoot.getElementById('login-container')
             a.style.background = `url('./anh nen/anhnen.jpg')`;
             a.style.backgroundSize= `cover`;
             a.style.backgroundRepeat = `no-repeat`;
+            let b = this._shadowRoot.getElementById('login-form')
+            b.style.backgroundColor= `rgba(197, 197, 197, 1)`;
         })
         
     }

@@ -12,7 +12,7 @@ const style = `
     }
     #register-form{
         width: 40%;
-        background-color: rgba(197, 197, 197, 0.7);
+        background-color: rgba(197, 197, 197, 1);
         height: 75vh;
         padding: 0px 20px;
         border-radius: 10px;
@@ -113,29 +113,45 @@ class RegisterScreen extends HTMLElement {
                 isValid = false
                 // dua vao 
             }
+            else{
+                this.SetError('first-name', '')
+            }
 
             if (lname.trim() === '') {
                 this.SetError('last-name', 'Please input last name')
                 isValid = false
+            }
+            else{
+                this.SetError('last-name', '')
             }
 
             if (email.trim() === '') {
                 this.SetError('email', 'Please input email')
                 isValid = false
             }
+            else{
+                this.SetError('email', '')
+            }
 
             if (pass.trim() === '') {
                 this.SetError('password', 'Please input passpword')
                 isValid = false
             }
+            else{
+                this.SetError('password', '')
+            }
 
             if (cpass.trim() === '') {
                 this.SetError('cpassword', 'Please input comfirm password')
                 isValid = false
-
+            }
+            else{
                 if (cpass !== pass) {
                     this.SetError('cpassword', 'comfirm password is not true')
                     isValid = false
+                }
+                else{
+                    this.SetError('cpassword', '')
                 }
             }
             if (!isValid) {
@@ -165,12 +181,16 @@ class RegisterScreen extends HTMLElement {
             a.style.background = `url('./anh nen/anhnen1.jpg')`;
             a.style.backgroundSize= `cover`;
             a.style.backgroundRepeat = `no-repeat`;
+            let b = this._shadowRoot.getElementById('register-form')
+            b.style.backgroundColor= `rgba(197, 197, 197, 1.0)`;
         })
         this._shadowRoot.getElementById('register-form').addEventListener('mouseout', () => {
             let a = this._shadowRoot.getElementById('register-container')
             a.style.background = `url('./anh nen/anhnen.jpg')`;
             a.style.backgroundSize= `cover`;
             a.style.backgroundRepeat = `no-repeat`;
+            let b = this._shadowRoot.getElementById('register-form')
+            b.style.backgroundColor= `rgba(197, 197, 197, 1)`;
         })
     }
 
