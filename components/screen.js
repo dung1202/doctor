@@ -26,16 +26,15 @@ class Screenz extends HTMLElement
         `
             <div class="service">
                 <div class="screen">
-
+                    <home-page></home-page>
                 </div>
             </div>
             ${style}
         `
-        console.log(this.screen)
+        
     }
     static get observedAttributes()
     {
-        console.log(0)
         return ['screen']
     }
     attributeChangedCallback(name, oldValue, newValue)

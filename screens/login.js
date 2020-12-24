@@ -132,14 +132,14 @@ class loginScreen extends HTMLElement {
             const pass = this._shadowRoot.getElementById('password').value
 
             if (email.trim() === '') {
-                this.SetError('first-name', 'please input email')
+                this.SetError('first-name', 'Please input email')
                 isValid = false
             }
             else{
                 this.SetError('first-name', '')
             }
             if (pass.trim() === '') {
-                this.SetError('password', 'please input passpword')
+                this.SetError('password', 'Please input passpword')
                 isValid = false
             }
             else{

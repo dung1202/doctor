@@ -3,6 +3,7 @@ const style =`
     .error{
         color: blue;
         margin-left: 5vw;
+        font-family: 'Nerko One';
     }
     input{
         border-radius: 10px;
@@ -13,6 +14,8 @@ const style =`
         box-sizing: border-box;
         margin-left: 5vw;
         outline: none;
+        font-family: 'Langar', cursive;
+        font-size: 0.9rem;
     }
     .input-wrapper {
         margin-bottom: 10px;

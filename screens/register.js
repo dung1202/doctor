@@ -147,7 +147,7 @@ class RegisterScreen extends HTMLElement {
             }
             else{
                 if (cpass !== pass) {
-                    this.SetError('cpassword', 'comfirm password is not true')
+                    this.SetError('cpassword', 'Comfirm password is not true')
                     isValid = false
                 }
                 else{

@@ -47,7 +47,15 @@ const style =
         display: flex;
         margin-left: 1vw;
     }
-    #n1, #n2, #n3, #n4, #n5{
+    #n1{
+        background-color: gray;
+        font-size: 1.8rem;
+        color: #fff;
+        margin-right: 5vw;
+        padding: 1vh 1vw;
+        border-radius: 5px;
+    }
+    #n2, #n3, #n4, #n5{
         background-color: transparent;
         font-size: 1.8rem;
         color: #fff;
@@ -103,7 +111,7 @@ class homeHeader extends HTMLElement {
                     </button>
                 </div>
             </div>
-            <screen-z></screen-z>
+            <screen-z id="h"></screen-z>
             ${style}
         `
         this._shadowDom.innerHTML = html
@@ -115,26 +123,31 @@ class homeHeader extends HTMLElement {
 
         this._shadowDom.getElementById("n1").addEventListener('click', () =>{
             this.setColor(1)   
-            this.SetError(1, `jskdkdjgfhfhfjkg`)     
+            this.SetError('h', `<home-page></home-page>`)     
         })
         
         this._shadowDom.getElementById("n2").addEventListener('click', () =>{
             this.setColor(2)
+            this.SetError('h', `<alarm-z></alarm-z>`)  
         })
         
         this._shadowDom.getElementById("n3").addEventListener('click', () =>{
             this.setColor(3)
+            this.SetError('h', `<story-z></story-z>`)  
         })
 
         this._shadowDom.getElementById("n4").addEventListener('click', () =>{
             this.setColor(4)
+            this.SetError('h', `<chart-z></chart-z>`)
         })
 
         this._shadowDom.getElementById("n5").addEventListener('click', () =>{
             this.setColor(5)
+            this.SetError('h', `<body-z></body-z>`)
         })
         this._shadowDom.getElementById("n6").addEventListener('click', () =>{
             this.setColor(6)
+            this.SetError('h', `<avatar-z></avatar-z>`)
         })
     }
     setColor(i){
@@ -144,8 +157,8 @@ class homeHeader extends HTMLElement {
         }
         this._shadowDom.getElementById(`n${i}`).style.backgroundColor = "gray"
     }
-    SetError(i, message) {
-        this._shadowDom.getElementById(`n${i}`).setAttribute('screen', message)
+    SetError(id, message) {
+        this._shadowDom.getElementById(id).setAttribute('screen', message)
     }
 }
 window.customElements.define('home-header', homeHeader)

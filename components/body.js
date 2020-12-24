@@ -1,19 +1,4 @@
-const style =
-`
-    <style>
-        #a{
-            padding: 5vh 20vw;
-        }
-        #service{
-            padding: 0vh 20vw;
-            background-color: rgba(197, 197, 197, 0.8);
-            text-align: center;
-            margin: 0 10vw;
-            height: 90vh;
-            border-radius: 5px;
-        }
-    </style>
-`
+
 class ServiceScreen5 extends HTMLElement 
 {
     constructor() {
@@ -23,13 +8,12 @@ class ServiceScreen5 extends HTMLElement
     connectedCallback(){
         this._shadowRoot.innerHTML = 
         `
-            <div id="service">
-                <div id="a">
-                    434234232
+        
+                <div >
+                    43jjjj4234232
                 </div>
-            </div>
-            ${style}
+           
         `
     }
 }
-window.customElements.define('service-screen5', ServiceScreen5)
+window.customElements.define('body-z', ServiceScreen5)

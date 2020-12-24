@@ -1,5 +1,4 @@
-
-class ServiceScreen4 extends HTMLElement 
+class Avatar extends HTMLElement 
 {
     constructor() {
         super()
@@ -8,12 +7,10 @@ class ServiceScreen4 extends HTMLElement
     connectedCallback(){
         this._shadowRoot.innerHTML = 
         `
-        
-                <div>
-                    4jjjjj42
-                </div>
-           
+            <div>
+                    43544654
+            </div>
         `
     }
 }
-window.customElements.define('chart-z', ServiceScreen4)
+window.customElements.define('avatar-z', Avatar)
