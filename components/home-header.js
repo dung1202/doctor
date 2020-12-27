@@ -1,11 +1,8 @@
 // import { redirect } from '../index.js'
 import { saveToLocalStorege } from '../uitil.js'
-var i=0
 const style =
     `   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
     <style>
     .container{
         background-color: #135766;
@@ -54,6 +51,7 @@ const style =
         margin-right: 5vw;
         padding: 1vh 1vw;
         border-radius: 5px;
+        cursor: pointer;
     }
     #n2, #n3, #n4, #n5{
         background-color: transparent;
@@ -62,13 +60,16 @@ const style =
         margin-right: 5vw;
         padding: 1vh 1vw;
         border-radius: 5px;
+        cursor: pointer;
     }
     #n6{
         background-color: transparent;      
         color: #fff;
         padding: 1vh 1vw;
         border-radius: 5px;
+        cursor: pointer;
     }
+
 </style>
     `
 class homeHeader extends HTMLElement {

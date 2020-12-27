@@ -13,7 +13,7 @@ const style = `
     #register-form{
         width: 40%;
         background-color: rgba(197, 197, 197, 1);
-        height: 75vh;
+        height: 76.5vh;
         padding: 0px 20px;
         border-radius: 10px;
         margin-top: 5vh;
@@ -84,11 +84,11 @@ class RegisterScreen extends HTMLElement {
                     <div id="redirect1">Login</div>
                     <div id="redirect2">Register</div>
                 </div>
-                <input-wrapper id="first-name" type="text" placeholder="First name"></input-wrapper>
-                <input-wrapper id="last-name" type="text" placeholder="Last name"></input-wrapper>
-                <input-wrapper id="email" type="text" placeholder="Email"></input-wrapper>
-                <input-wrapper id="password" type="password" placeholder="Password"></input-wrapper>
-                <input-wrapper id="cpassword" type="password" placeholder="confirm password"></input-wrapper>
+                <input-wrapper id="first-name" type="text" placeholder="First name" icon='<i class="fa fa-user" aria-hidden="true"></i>'></input-wrapper>
+                <input-wrapper id="last-name" type="text" placeholder="Last name" icon='<i class="fa fa-odnoklassniki" aria-hidden="true"></i>'></input-wrapper>
+                <input-wrapper id="email" type="text" placeholder="Email" icon='<i class="fa fa-envelope" aria-hidden="true"></i>'></input-wrapper>
+                <input-wrapper id="password" type="password" placeholder="Password" icon='<i class="fa fa-lock" aria-hidden="true"></i>'></input-wrapper>
+                <input-wrapper id="cpassword" type="password" placeholder="confirm password" icon='<i class="fa fa-key" aria-hidden="true"></i>'></input-wrapper>
                 <div style="text-align: center;">
                     <button>Register</button>
                 </div>    

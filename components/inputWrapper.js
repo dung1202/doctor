@@ -1,4 +1,5 @@
 const style =` 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
     .error{
         color: blue;
@@ -9,19 +10,27 @@ const style =`
         border-radius: 10px;
         width: 30vw;
         border: 0px solid black;
-        border-bottom: 1px;
         padding: 12px;
         box-sizing: border-box;
-        margin-left: 5vw;
         outline: none;
         font-family: 'Langar', cursive;
         font-size: 0.9rem;
+        margin-left: 1.5vw;
     }
     .input-wrapper {
         margin-bottom: 10px;
-        height: 8vh;
+        height: 9vh;
     }
-
+    .flex{
+        display: flex;
+        margin-left: 1vw;
+    }
+    .icon{
+        padding: 0.8vw;
+        width: 1vw;
+        font-size: 1.5rem;
+        color: #A02C2D;
+    }
     </style>
 `
 //border-box la tu border vao trong
@@ -36,10 +45,16 @@ class inputWrapper extends HTMLElement
         this.type = this.getAttribute('type')
         this.placeholder = this.getAttribute('placeholder')
         this.error = this.getAttribute('error') || ''
+        this.icon = this.getAttribute('icon')
         this._shadowRoot.innerHTML = 
         `
             <div class="input-wrapper">
-                <input id="input-main" type="${this.type}" placeholder="${this.placeholder}">
+                <div class="flex">
+                    <div class="icon">
+                        ${this.icon}
+                    </div>
+                    <input id="input-main" type="${this.type}" placeholder="${this.placeholder}">
+                </div>
                 <div class="error">
 
                 </div>
@@ -47,13 +62,11 @@ class inputWrapper extends HTMLElement
             ${style}
             
         `
-        
     }
     static get observedAttributes()
     { 
         return ['error']
     }
-
     attributeChangedCallback(name, oldValue, newValue)
     {
         if (name === 'error'){
