@@ -1,4 +1,4 @@
-const style =` 
+const style = ` 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
     .error{
@@ -31,29 +31,42 @@ const style =`
         font-size: 1.5rem;
         color: #A02C2D;
     }
+    #iconl{
+        padding: 1vw;
+        width: 1vw;
+        font-size: 1rem;
+        color: white;
+    }
     </style>
 `
 //border-box la tu border vao trong
 
-class inputWrapper extends HTMLElement
-{
-    constructor(){
+class inputWrapper extends HTMLElement {
+    constructor() {
         super()
-        this._shadowRoot = this.attachShadow({mode: 'open'})
+        this._shadowRoot = this.attachShadow({ mode: 'open' })
     }
-    connectedCallback(){
+    connectedCallback() {
         this.type = this.getAttribute('type')
         this.placeholder = this.getAttribute('placeholder')
         this.error = this.getAttribute('error') || ''
         this.icon = this.getAttribute('icon')
-        this._shadowRoot.innerHTML = 
-        `
+        this.iconl = this.getAttribute('iconl')
+
+        if (this.iconl === '1') {
+            this.iconl = ''
+        }
+        this._shadowRoot.innerHTML =
+            `
             <div class="input-wrapper">
                 <div class="flex">
                     <div class="icon">
                         ${this.icon}
                     </div>
                     <input id="input-main" type="${this.type}" placeholder="${this.placeholder}">
+                    <div id="iconl">
+                        ${this.iconl}
+                    </div>
                 </div>
                 <div class="error">
 
@@ -62,14 +75,20 @@ class inputWrapper extends HTMLElement
             ${style}
             
         `
+        this._shadowRoot.getElementById('iconl').addEventListener('mouseover', () => {
+            this._shadowRoot.getElementById('input-main').type = 'text'
+        })
+        this._shadowRoot.getElementById('iconl').addEventListener('mouseout', () => {
+            this._shadowRoot.getElementById('input-main').type = 'password'
+        })
+
     }
-    static get observedAttributes()
-    { 
+
+    static get observedAttributes() {
         return ['error']
     }
-    attributeChangedCallback(name, oldValue, newValue)
-    {
-        if (name === 'error'){
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'error') {
             this._shadowRoot.querySelector('.error').innerHTML = newValue
         }
     }
@@ -78,7 +97,7 @@ class inputWrapper extends HTMLElement
     //     return value
     // }
     // getter
-    get value(){
+    get value() {
         const value = this._shadowRoot.getElementById('input-main').value
         return value
     }

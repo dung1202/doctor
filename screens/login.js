@@ -108,7 +108,7 @@ hr{
 }
 </style>
 `
-var i=1;
+
 // import { redirect } from '../index.js'
 import { getDataFromDocs, saveToLocalStorege } from '../uitil.js'
 
@@ -126,8 +126,8 @@ class loginScreen extends HTMLElement {
             <div id="redirect2">Login</div>
             <div id="redirect1">Register</div>
         </div>
-        <input-wrapper id="first-name" type="text" placeholder="Email" icon='<i class="fa fa-envelope" aria-hidden="true"></i>'></input-wrapper>
-        <input-wrapper id="password" type="password" placeholder="Password" icon='<i class="fa fa-key" aria-hidden="true"></i>'></input-wrapper>    
+        <input-wrapper id="first-name" type="text" placeholder="Email" icon='<i class="fa fa-envelope" aria-hidden="true"></i>' iconl='1'></input-wrapper>
+        <input-wrapper id="password" type="password" placeholder="Password" icon='<i class="fa fa-key" aria-hidden="true"></i>' iconl='<i class="fa fa-eye" aria-hidden="true"></i>'></input-wrapper>    
         <div style="text-align: center;">
             <button>login</button>
         </div>
@@ -146,21 +146,57 @@ class loginScreen extends HTMLElement {
             </div>
         </div>
         <hr>
-        <div style="text-align: center;" class="k">
-        Contact information:
-        </div>
-        <div style="text-align: center;" class="k">
+            <div style="text-align: center;" class="k">
+                Contact information:
+            </div>
+            <div style="text-align: center;" class="k">
                 Email: DoctorSleep.contact@gmail.com
                 <div>Phone number: 0866577135</div>
-        </div>
-        <div class="footer">
-             Copyright © 2020 Doctor Sleep. All rights reserved
-        </div>
+            </div>
+            <div class="footer">
+                Copyright © 2020 Doctor Sleep. All rights reserved
+            </div>
         </form>
     </div>
     ${style}
     `
         const loginFrom = this._shadowRoot.getElementById('login-form')
+        loginFrom.addEventListener('keypress', async (Event) => {
+            if (Event.key === 'Enter') {
+                let isValid = true
+                const email = this._shadowRoot.getElementById('first-name').value
+                const pass = this._shadowRoot.getElementById('password').value
+
+                if (email.trim() === '') {
+                    this.SetError('first-name', 'Please input email')
+                    isValid = false
+                }
+                else {
+                    this.SetError('first-name', '')
+                }
+                if (pass.trim() === '') {
+                    this.SetError('password', 'Please input passpword')
+                    isValid = false
+                }
+                else {
+                    this.SetError('password', '')
+                }
+                if (!isValid) {
+                    return
+                }
+
+
+                const user = await firebase.firestore().collection('users')
+                    .where('email', '==', email).where('password', '==', pass).get()
+                if (!user.empty === true) {
+                    saveToLocalStorege('currentUser', getDataFromDocs(user)[0])
+                    router.navigate('home')
+                }
+                else {
+                    this.SetError('password', 'Wrong email or wrong password')
+                }
+            }
+        })
         loginFrom.addEventListener('submit', async (e) => {
             e.preventDefault() //chống gửi lên khi chưa ấn đăng ký
 
@@ -172,14 +208,14 @@ class loginScreen extends HTMLElement {
                 this.SetError('first-name', 'Please input email')
                 isValid = false
             }
-            else{
+            else {
                 this.SetError('first-name', '')
             }
             if (pass.trim() === '') {
                 this.SetError('password', 'Please input passpword')
                 isValid = false
             }
-            else{
+            else {
                 this.SetError('password', '')
             }
             if (!isValid) {
@@ -204,20 +240,17 @@ class loginScreen extends HTMLElement {
         this._shadowRoot.getElementById('login-form').addEventListener('mouseover', () => {
             let a = this._shadowRoot.getElementById('login-container')
             a.style.background = `url('./anh nen/anhnen1.jpg')`;
-            a.style.backgroundSize= `cover`;
+            a.style.backgroundSize = `cover`;
             a.style.backgroundRepeat = `no-repeat`;
-            let b = this._shadowRoot.getElementById('login-form')
-            b.style.backgroundColor= `rgba(197, 197, 197, 1.0)`;
+
         })
         this._shadowRoot.getElementById('login-form').addEventListener('mouseout', () => {
             let a = this._shadowRoot.getElementById('login-container')
             a.style.background = `url('./anh nen/anhnen.jpg')`;
-            a.style.backgroundSize= `cover`;
+            a.style.backgroundSize = `cover`;
             a.style.backgroundRepeat = `no-repeat`;
-            let b = this._shadowRoot.getElementById('login-form')
-            b.style.backgroundColor= `rgba(197, 197, 197, 1)`;
         })
-        
+
     }
     SetError(id, message) {
         this._shadowRoot.getElementById(id).setAttribute('error', message)

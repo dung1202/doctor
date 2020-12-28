@@ -1,3 +1,20 @@
+
+const style =
+`
+    <style>
+        .screen{
+            padding: 5vh 20vw;
+        }
+        .service{
+            padding: 0vh 20vw;
+            background-color: rgba(197, 197, 197, 0.8);
+            text-align: center;
+            margin: 0 10vw;
+            height: 90vh;
+            border-radius: 5px;
+        }
+    </style>
+`
 class Avatar extends HTMLElement 
 {
     constructor() {
@@ -7,9 +24,12 @@ class Avatar extends HTMLElement
     connectedCallback(){
         this._shadowRoot.innerHTML = 
         `
-            <div>
-                    43544654
-            </div>
+            <div class="service">
+                <div class="screen">
+                   35436462352
+                </div>
+            </div>    
+            ${style}
         `
     }
 }
