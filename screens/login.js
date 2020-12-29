@@ -93,9 +93,17 @@ hr{
     padding: 1vh 1vw;
     border-radius: 5px;
     font-size: 1.5rem;
-    color: #A02C2D;
     cursor: pointer;
 }
+#n2{
+    color: #3b5998;
+}
+
+#n3{
+    color: #dd3e3a;
+}
+
+
 #n2:hover, #n3:hover, #n1:hover{
     background-color: gray;
     color: #fff;
