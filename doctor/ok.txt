@@ -1,0 +1,47 @@
+const style =
+`
+    <style>
+        .service{
+            padding: 1vh 1vw;
+            background-color: rgba(197, 197, 197, 0.8);
+            text-align: center;
+            margin: 0 10vw;
+            height: 88vh;
+            border-radius: 5px;
+        }
+        #alarm{
+            display: flex;
+            text-align: center;
+        }
+        
+    </style>
+`
+
+class ServiceScreen2 extends HTMLElement 
+{
+    constructor() {
+        super()
+        this._shadowRoot = this.attachShadow({ mode: 'open' })
+    }
+    connectedCallback(){
+        this._shadowRoot.innerHTML = 
+        `
+            <div class="service">
+                <div id="alarm">
+                    <div id="">
+                        <div id="hour">00</div>
+                            <input id="input1" type="range" value="0" min="0" max="23">
+                    </div>
+                    <div>:</div>
+                    <div id="">
+                        <div id="minutes">00</div>
+                        <input id="input2" type="range" value="0" min="0" max="59">
+                    </div>
+                </div>    
+            </div>    
+            ${style}
+        `
+        
+    }
+}
+window.customElements.define('alarm-z', ServiceScreen2)
