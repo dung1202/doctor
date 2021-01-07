@@ -30,25 +30,84 @@ const style =
     `
     <style>
         #create-post{
-            width: 60%;
+            width: 70%;
             margin: auto;
             margin-top: 20px;
             text-align: right;
+            
         }
         #create-post textarea{
-            width: 100%;
+            width: 53vw;
             border: 1px solid #dbdbdb;
             border-radius: 10px;
             outline: none;
             resize: none;
             height: 10vh;
+            padding: 1vw;
+            font-size: 1.2rem;
+            background-color:#f5f1ecff;
         }
-        .post{
-            background-color: #d7c2d3;
-            color: #222B5F;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
+        @import url(https://fonts.googleapis.com/css?family=BenchNine:700);
+.snip1582 {
+  background-color: #c47135;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 1em;
+  font-size: 22px;
+  line-height: 1em;
+  margin: 15px 0px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.snip1582:before,
+.snip1582:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.snip1582:before {
+  border-color: #c47135;
+  border-top-width: 2px;
+  left: 0px;
+  top: -5px;
+}
+
+.snip1582:after {
+  border-bottom-width: 2px;
+  border-color: #c47135;
+  bottom: -5px;
+  right: 0px;
+}
+
+.snip1582:hover,
+.snip1582.hover {
+  background-color: #c47135;
+}
+
+.snip1582:hover:before,
+.snip1582.hover:before,
+.snip1582:hover:after,
+.snip1582.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+
+Resources
     </style>
 `
 class createPost extends HTMLElement {
@@ -59,16 +118,14 @@ class createPost extends HTMLElement {
     connectedCallback() {
         this._shadowDom.innerHTML =
             `
-        <div class="woa">
+        
             <form id="create-post">
                 <div id="q">
-                    <textarea autofocus name="content" id="content" row="6" placeholder="Bạn đang nghĩ gì"></textarea>
-                    
+                    <textarea wrap="soft|hard" autofocus name="content" id="content" row="6" placeholder="What is your dream?"></textarea>
                 </div>
-                <input type="file" id="file">
-                <button class="post">Post</button>
+                <button class="snip1582">Post</button>
             </form>
-        </div>
+        
             ${style}
         `
         const postFrom = this._shadowDom.getElementById('create-post')
@@ -95,6 +152,8 @@ class createPost extends HTMLElement {
                     createAt: time,
                     isshow: isshow,
                     comment: [],
+                    like: `0`,
+                    share: `0`,
                 }
 
                 const res = await firebase.firestore().collection('posts').add(data)

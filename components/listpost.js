@@ -3,7 +3,7 @@ import { getDataFromDoc } from '../uitil.js'
 const style =
     `
 .list-post{
-    width: 60%;
+    width: 70%;
     margin: auto;
     margin-top: 10px;
 }
@@ -20,7 +20,7 @@ class ListPost extends HTMLElement {
         ListPost.forEach(element => {
             const imgSrc = (element.files && element.files.length >0)? element.files[0] : null
             html += `
-                <post-item time="${element.createAt}" author="${element.authorname}" content="${element.content}" img="${imgSrc}"></post-item>
+                <post-item time="${element.createAt}" author="${element.authorname}" content="${element.content}" img="${imgSrc}" like='${element.like}' share="${element.share}" id="${element.id}"></post-item>
             `
         });
         this.listenCollectionChange()
@@ -58,6 +58,9 @@ class ListPost extends HTMLElement {
         postItem.setAttribute('time', data.createAt)
         postItem.setAttribute('author', data.authorname)
         postItem.setAttribute('content', data.content)
+        postItem.setAttribute('like', data.like)
+        postItem.setAttribute('share', data.share)
+        postItem.setAttribute('id', data.id)
         console.log(postItem)
         const parent = this._shadowDom.querySelector('.list-post')
         parent.insertBefore(postItem, parent.firstChild) //đưa Item len dau

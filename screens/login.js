@@ -245,19 +245,6 @@ class loginScreen extends HTMLElement {
         this._shadowRoot.getElementById('redirect1').addEventListener('click', () => {
             router.navigate('register')
         })
-        this._shadowRoot.getElementById('login-form').addEventListener('mouseover', () => {
-            let a = this._shadowRoot.getElementById('login-container')
-            a.style.background = `url('./anh nen/anhnen1.jpg')`;
-            a.style.backgroundSize = `cover`;
-            a.style.backgroundRepeat = `no-repeat`;
-
-        })
-        this._shadowRoot.getElementById('login-form').addEventListener('mouseout', () => {
-            let a = this._shadowRoot.getElementById('login-container')
-            a.style.background = `url('./anh nen/anhnen.jpg')`;
-            a.style.backgroundSize = `cover`;
-            a.style.backgroundRepeat = `no-repeat`;
-        })
 
     }
     SetError(id, message) {

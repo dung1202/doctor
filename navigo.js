@@ -10,7 +10,7 @@ const style =
         #home-container{
             background: url('./anh nen/anhhome.jpg');
             background-size: cover;
-            background-repeat: no-repeat;
+            background-repeat: repeat;
             width: 100vw;
             height: 100vh;
         }  
@@ -28,7 +28,7 @@ router
 
             redirect('alarm');
         },
-        'home//story': function () {
+        'home//dream': function () {
 
             redirect('story');
         },
@@ -95,6 +95,7 @@ function redirect(screenName) {
                 <home-screen></home-screen>
                 <home-page></home-page>
             </div>
+            <footer-z></footer-z>
             ${style}
         `
         
@@ -134,7 +135,7 @@ function redirect(screenName) {
                 <home-screen></home-screen>
                 <story-z></story-z>
             </div>
-            ${style}
+        
         `
      
         

@@ -251,22 +251,6 @@ class RegisterScreen extends HTMLElement {
         this._shadowRoot.getElementById('redirect1').addEventListener('click', () => {
             router.navigate('login')
         })
-        this._shadowRoot.getElementById('register-form').addEventListener('mouseover', () => {
-            let a = this._shadowRoot.getElementById('register-container')
-            a.style.background = `url('./anh nen/anhnen1.jpg')`;
-            a.style.backgroundSize = `cover`;
-            a.style.backgroundRepeat = `no-repeat`;
-            let b = this._shadowRoot.getElementById('register-form')
-            b.style.backgroundColor = `rgba(197, 197, 197, 1.0)`;
-        })
-        this._shadowRoot.getElementById('register-form').addEventListener('mouseout', () => {
-            let a = this._shadowRoot.getElementById('register-container')
-            a.style.background = `url('./anh nen/anhnen.jpg')`;
-            a.style.backgroundSize = `cover`;
-            a.style.backgroundRepeat = `no-repeat`;
-            let b = this._shadowRoot.getElementById('register-form')
-            b.style.backgroundColor = `rgba(197, 197, 197, 1)`;
-        })
     }
 
     SetError(id, message) {

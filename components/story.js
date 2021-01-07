@@ -1,17 +1,15 @@
 const style =
 `
     <style>
-        .screen{
-            padding: 5vh 20vw;
-        }
-        .service{
-            padding: 0vh 20vw;
-            background-color: rgba(197, 197, 197, 0.8);
-            text-align: center;
-            margin: 0 10vw;
-            height: 90vh;
-            border-radius: 5px;
-        }
+    #story{
+        padding: 0.5vh;
+        background-color: rgba(83, 255, 215, 1); 
+        margin: 0vh 10vw;
+        border-radius: 10px;
+        height: 100%;
+        background-color:#434343ff
+
+    }
     </style>
 `
 class ServiceScreen3 extends HTMLElement 
@@ -23,12 +21,11 @@ class ServiceScreen3 extends HTMLElement
     connectedCallback(){
         this._shadowRoot.innerHTML = 
         `
-            <div class="service">
-                <div class="screen">
-                    453243242
-                </div>
-            </div>    
-            ${style}
+        <div id="story">
+            <create-post></create-post>
+            <list-post><list-post>  
+        </div> 
+        ${style}
         `
     }
 }

@@ -67,7 +67,6 @@ let style =
     }
     
 </style>
-
     `
 const s = style
 class homeHeader extends HTMLElement {
@@ -95,9 +94,7 @@ class homeHeader extends HTMLElement {
                     <div id="n3">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </div>
-                    <div id="n4">
-                        <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                    </div>
+                    
                     <div id="n5">
                     <i class="fa fa-universal-access" aria-hidden="true"></i>
                     </div>
@@ -113,6 +110,9 @@ class homeHeader extends HTMLElement {
             </div>
             ${style}
         `
+        // <div id="n4">
+        //                 <i class="fa fa-bar-chart" aria-hidden="true"></i>
+        //             </div>
         this._shadowDom.innerHTML = html
         this._shadowDom.getElementById("btn").addEventListener('click', () =>{
             saveToLocalStorege('currentUser', null)
@@ -138,23 +138,23 @@ class homeHeader extends HTMLElement {
         })
         
         this._shadowDom.getElementById("n3").addEventListener('click', () =>{      
-            router.navigate('home//story') 
+            router.navigate('home//dream') 
             style = s
         })
 
-        this._shadowDom.getElementById("n4").addEventListener('click', () =>{          
-            router.navigate('home//chart')
-            style = s 
-        })
+        // this._shadowDom.getElementById("n4").addEventListener('click', () =>{          
+        //     router.navigate('home//chart')
+        //     style = s 
+        // })
 
         this._shadowDom.getElementById("n5").addEventListener('click', () =>{  
             router.navigate('home//body') 
             style = s
         })
-        this._shadowDom.getElementById("n6").addEventListener('click', () =>{
-            router.navigate('home//avatar') 
-            style = s
-        })
+        // this._shadowDom.getElementById("n6").addEventListener('click', () =>{
+        //     router.navigate('home//avatar') 
+        //     style = s
+        // })
     }
 }
 window.customElements.define('home-screen', homeHeader)
